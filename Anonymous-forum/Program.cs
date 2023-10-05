@@ -1,5 +1,7 @@
-using Anonymous_forum.Models;
+﻿using Anonymous_forum.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Anonymous_forum.Data;
 
 namespace Anonymous_forum
 {
@@ -8,6 +10,8 @@ namespace Anonymous_forum
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            builder.Services.AddDbContext<Anonymous_forumContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("Anonymous_forumContext") ?? throw new InvalidOperationException("Connection string 'Anonymous_forumContext' not found.")));
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();

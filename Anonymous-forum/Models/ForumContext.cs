@@ -21,7 +21,7 @@ namespace Anonymous_forum.Models
         {
             modelBuilder.Entity<Categories>(entity =>
             {
-                entity.HasKey(e => e.CategoryId); // Makes sure that this entity & all other entities have keys
+                entity.HasKey(e => e.CategoryId); // Makes sure that this entity and the entities below have keys
             });
 
             modelBuilder.Entity<Comments>(entity =>
