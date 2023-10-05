@@ -20,7 +20,7 @@ namespace Anonymous_forum.Data
 
         public DbSet<Threads> Threads { get; set; } = null!;
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        /*protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Categories>(entity =>
             {
@@ -38,6 +38,6 @@ namespace Anonymous_forum.Data
             });
 
             OnModelCreating(modelBuilder);
-        }
+        }*/
     }
 }
