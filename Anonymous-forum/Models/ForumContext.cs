@@ -11,7 +11,6 @@ namespace Anonymous_forum.Models
         public ForumContext(DbContextOptions<ForumContext> options)
             : base(options)
         {
-
         }
 
         public DbSet<Categories> Categories { get; set; } = null!;
