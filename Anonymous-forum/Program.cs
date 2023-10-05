@@ -10,14 +10,12 @@ namespace Anonymous_forum
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-            builder.Services.AddDbContext<Anonymous_forumContext>(options =>
-                options.UseSqlServer(builder.Configuration.GetConnectionString("Anonymous_forumContext") ?? throw new InvalidOperationException("Connection string 'Anonymous_forumContext' not found.")));
-
-            // Add services to the container.
-            builder.Services.AddControllersWithViews();
 
             builder.Services.AddDbContext<ForumContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("ForumContext")));
+
+            // Add services to the container.
+            builder.Services.AddControllersWithViews();
 
             var app = builder.Build();
 

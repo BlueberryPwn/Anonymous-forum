@@ -12,9 +12,9 @@ namespace Anonymous_forum.Controllers
 {
     public class CategoriesController : Controller
     {
-        private readonly Anonymous_forumContext _context;
+        private readonly ForumContext _context;
 
-        public CategoriesController(Anonymous_forumContext context)
+        public CategoriesController(ForumContext context)
         {
             _context = context;
         }
@@ -24,7 +24,7 @@ namespace Anonymous_forum.Controllers
         {
               return _context.Categories != null ? 
                           View(await _context.Categories.ToListAsync()) :
-                          Problem("Entity set 'Anonymous_forumContext.Categories'  is null.");
+                          Problem("Entity set 'ForumContext.Categories'  is null.");
         }
 
         // GET: Categories/Details/5
@@ -143,7 +143,7 @@ namespace Anonymous_forum.Controllers
         {
             if (_context.Categories == null)
             {
-                return Problem("Entity set 'Anonymous_forumContext.Categories'  is null.");
+                return Problem("Entity set 'ForumContext.Categories'  is null.");
             }
             var categories = await _context.Categories.FindAsync(id);
             if (categories != null)

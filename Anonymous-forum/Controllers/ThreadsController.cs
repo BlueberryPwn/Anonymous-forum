@@ -12,9 +12,9 @@ namespace Anonymous_forum.Controllers
 {
     public class ThreadsController : Controller
     {
-        private readonly Anonymous_forumContext _context;
+        private readonly ForumContext _context;
 
-        public ThreadsController(Anonymous_forumContext context)
+        public ThreadsController(ForumContext context)
         {
             _context = context;
         }
@@ -24,7 +24,7 @@ namespace Anonymous_forum.Controllers
         {
               return _context.Threads != null ? 
                           View(await _context.Threads.ToListAsync()) :
-                          Problem("Entity set 'Anonymous_forumContext.Threads'  is null.");
+                          Problem("Entity set 'ForumContext.Threads'  is null.");
         }
 
         // GET: Threads/Details/5
@@ -143,7 +143,7 @@ namespace Anonymous_forum.Controllers
         {
             if (_context.Threads == null)
             {
-                return Problem("Entity set 'Anonymous_forumContext.Threads'  is null.");
+                return Problem("Entity set 'ForumContext.Threads'  is null.");
             }
             var threads = await _context.Threads.FindAsync(id);
             if (threads != null)

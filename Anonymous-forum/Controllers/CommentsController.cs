@@ -12,9 +12,9 @@ namespace Anonymous_forum.Controllers
 {
     public class CommentsController : Controller
     {
-        private readonly Anonymous_forumContext _context;
+        private readonly ForumContext _context;
 
-        public CommentsController(Anonymous_forumContext context)
+        public CommentsController(ForumContext context)
         {
             _context = context;
         }
@@ -24,7 +24,7 @@ namespace Anonymous_forum.Controllers
         {
               return _context.Comments != null ? 
                           View(await _context.Comments.ToListAsync()) :
-                          Problem("Entity set 'Anonymous_forumContext.Comments'  is null.");
+                          Problem("Entity set 'ForumContext.Comments'  is null.");
         }
 
         // GET: Comments/Details/5
@@ -143,7 +143,7 @@ namespace Anonymous_forum.Controllers
         {
             if (_context.Comments == null)
             {
-                return Problem("Entity set 'Anonymous_forumContext.Comments'  is null.");
+                return Problem("Entity set 'ForumContext.Comments'  is null.");
             }
             var comments = await _context.Comments.FindAsync(id);
             if (comments != null)
