@@ -1,4 +1,4 @@
-namespace Anonymous_forum.Models
+namespace Anonymous_forum.ViewModels
 {
     public class ErrorViewModel
     {
