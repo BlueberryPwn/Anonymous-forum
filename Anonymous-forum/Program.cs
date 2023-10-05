@@ -1,3 +1,6 @@
+using Anonymous_forum.Models;
+using Microsoft.EntityFrameworkCore;
+
 namespace Anonymous_forum
 {
     public class Program
@@ -8,6 +11,9 @@ namespace Anonymous_forum
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddDbContext<ForumContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("ForumContext")));
 
             var app = builder.Build();
 
