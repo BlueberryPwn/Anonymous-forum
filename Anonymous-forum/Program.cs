@@ -16,6 +16,7 @@ namespace Anonymous_forum
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddRazorPages();
 
             var app = builder.Build();
 

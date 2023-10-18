@@ -23,6 +23,21 @@ namespace Anonymous_forum.Controllers
             return View();
         }
 
+        public IActionResult Education()
+        {
+            return View();
+        }
+
+        public IActionResult Movies()
+        {
+            return View();
+        }
+
+        public IActionResult Sports()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
