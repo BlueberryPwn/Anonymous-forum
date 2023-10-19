@@ -14,11 +14,9 @@ namespace Anonymous_forum.Data
         {
         }
 
-        public DbSet<Categories> Categories { get; set; } = null!;
-
-        public DbSet<Comments> Comments { get; set; } = null!;
-
-        public DbSet<Threads> Threads { get; set; } = null!;
+        public DbSet<Categories> Categories { get; set; }
+        public DbSet<Comments> Comments { get; set; }
+        public DbSet<Threads> Threads { get; set; }
 
         /*protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

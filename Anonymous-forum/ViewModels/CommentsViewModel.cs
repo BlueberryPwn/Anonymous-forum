@@ -2,7 +2,7 @@
 
 namespace Anonymous_forum.Models
 {
-    public class Comments
+    public class CommentsViewModel
     {
         [Key]
         public int CommentId { get; set; }

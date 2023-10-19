@@ -2,7 +2,7 @@
 
 namespace Anonymous_forum.Models
 {
-    public class Threads
+    public class ThreadsViewModel
     {
         [Key]
         public int ThreadId { get; set; }
