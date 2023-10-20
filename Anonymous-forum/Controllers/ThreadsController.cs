@@ -4,17 +4,19 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Anonymous_forum.Controllers
 {
-    public class CommentController : Controller
+    public class ThreadsController : Controller
     {
         private readonly ForumContext _dbContext;
-        public CommentController(ForumContext dbContext)
+        public ThreadsController(ForumContext dbContext)
         {
             _dbContext = dbContext;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int id)
         {
-            return View();
+            var result = _dbContext.Threads.Where(x => x.CategoryId == id).ToList();
+
+            return View(result);
         }
     }
 }

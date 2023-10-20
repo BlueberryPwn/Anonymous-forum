@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Anonymous_forum.Models.Threads>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Threads</h1>
+
+<table class="table">
+    <tr>
+        <th>
+           @Html.DisplayNameFor(model => model.ThreadTitle)
+        </th>
+        <th>
+           @Html.DisplayNameFor(model => model.ThreadText)
+        </th>
+    </tr>
+
+    @foreach (var thread in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelThread => thread.ThreadTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelThread => thread.ThreadText)
+            </td>
+        </tr>
+    }
+</table>

@@ -40,6 +40,11 @@ namespace Anonymous_forum
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.MapControllerRoute(
+                    name: "thread",
+                    pattern: "{controller=Threads}/{action=Index}/{id}"
+                    );
             });
 
             app.Run();

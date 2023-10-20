@@ -4,10 +4,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Anonymous_forum.Controllers
 {
-    public class CategoryController : Controller
+    public class CategoriesController : Controller
     {
         private readonly ForumContext _dbContext;
-        public CategoryController(ForumContext dbContext)
+        public CategoriesController(ForumContext dbContext)
         {
             _dbContext = dbContext;
         }
