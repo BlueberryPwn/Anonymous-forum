@@ -1,13 +1,14 @@
 ﻿@using Microsoft.EntityFrameworkCore;
-@model Anonymous_forum.Models.ThreadsViewModel
+@model Anonymous_forum.Models.ThreadViewModel
 
 @{
-    ViewData["Title"] = "CreateThreads";
+    ViewData["Title"] = "CreateThread";
 }
 
 <h2>Create New Thread</h2>
+<p>@Html.ActionLink("Go back", "Index")</p>
 
-@using (Html.BeginForm("CreateThreads", "Threads", FormMethod.Post))
+@using (Html.BeginForm("CreateThread", "Thread", FormMethod.Post))
 {
     <fieldset>
         <div class="form-label">
@@ -34,10 +35,4 @@
             <input type="submit" value="Create New Thread" />
         </div>
     </fieldset>
-}
-
-@section scripts{
-    <script>
-
-    </script>
 }

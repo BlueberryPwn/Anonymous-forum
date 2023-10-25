@@ -1,13 +1,13 @@
 ﻿@using Microsoft.EntityFrameworkCore;
-@model Anonymous_forum.Models.CommentsViewModel
+@model Anonymous_forum.Models.ThreadViewModel
 
 @{
-    ViewData["Title"] = "CreateComments";
+    ViewData["Title"] = "CreateComment";
 }
 
 <h2>Create New Comment</h2>
 
-@using (Html.BeginForm("CreateComments", "Threads", FormMethod.Post))
+@using (Html.BeginForm("CreateComment", "Thread", FormMethod.Post))
 {
     <fieldset>
         <div class="form-label">

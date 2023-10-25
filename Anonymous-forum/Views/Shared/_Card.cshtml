@@ -1,0 +1,10 @@
+﻿@model Threads?
+
+<tr>
+    <td>
+        @Html.DisplayFor(modelThread => Model.ThreadTitle)
+    </td>
+    <td>
+        @Html.ActionLink("Visit Thread", "Thread", new { id=Model.ThreadId })
+    </td>
+</tr>

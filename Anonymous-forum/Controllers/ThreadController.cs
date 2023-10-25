@@ -2,13 +2,14 @@
 using Anonymous_forum.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Threading;
 
 namespace Anonymous_forum.Controllers
 {
-    public class ThreadsController : Controller
+    public class ThreadController : Controller
     {
         private readonly ForumContext _dbContext;
-        public ThreadsController(ForumContext dbContext)
+        public ThreadController(ForumContext dbContext)
         {
             _dbContext = dbContext;
         }
@@ -22,9 +23,9 @@ namespace Anonymous_forum.Controllers
         }
 
         [HttpGet]
-        public IActionResult CreateThreads()
+        public IActionResult CreateThread()
         {
-            var result = new ThreadsViewModel
+            var result = new ThreadViewModel
             {
                 Categories = _dbContext.Categories
                 .Select(c => new SelectListItem()
@@ -37,23 +38,21 @@ namespace Anonymous_forum.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateThreads(Threads threads)
+        public IActionResult CreateThread(Threads threads)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                _dbContext.Threads.Add(threads);
-                _dbContext.SaveChanges();
+                return View(threads);
+            }
 
-                return Redirect("/");
-            }
-            else
-            {
-                return View();
-            }
+            _dbContext.Threads.Add(threads);
+            _dbContext.SaveChanges();
+
+            return Redirect("/");
         }
 
         [HttpGet]
-        public IActionResult Comments(int id)
+        public IActionResult Thread(int id)
         {
             var result = _dbContext.Comments.Where(x => x.ThreadId == id).ToList();
 
@@ -61,19 +60,17 @@ namespace Anonymous_forum.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateComments(Comments comments)
+        public IActionResult CreateComment(Comments comments)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                _dbContext.Comments.Add(comments);
-                _dbContext.SaveChanges();
+                return View(comments);
+            }
 
-                return Redirect("/");
-            }
-            else
-            {
-                return View();
-            }
+            _dbContext.Comments.Add(comments);
+            _dbContext.SaveChanges();
+
+            return Redirect("/");
         }
     }
 }

@@ -23,17 +23,17 @@ namespace Anonymous_forum.Controllers
             return View();
         }
 
-        public IActionResult Education()
-        {
-            return View();
-        }
-
-        public IActionResult Movies()
+        public IActionResult Educatiion()
         {
             return View();
         }
 
         public IActionResult Sports()
+        {
+            return View();
+        }
+
+        public IActionResult Movies()
         {
             return View();
         }

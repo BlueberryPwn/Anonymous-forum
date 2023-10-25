@@ -17,25 +17,5 @@ namespace Anonymous_forum.Data
         public DbSet<Categories> Categories { get; set; }
         public DbSet<Comments> Comments { get; set; }
         public DbSet<Threads> Threads { get; set; }
-
-        /*protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Categories>(entity =>
-            {
-                entity.HasKey(e => e.CategoryId); // Makes sure that this entity and the entities below have keys
-            });
-
-            modelBuilder.Entity<Comments>(entity =>
-            {
-                entity.HasKey(e => e.CommentId);
-            });
-
-            modelBuilder.Entity<Threads>(entity =>
-            {
-                entity.HasKey(e => e.ThreadId);
-            });
-
-            OnModelCreating(modelBuilder);
-        }*/
     }
 }
