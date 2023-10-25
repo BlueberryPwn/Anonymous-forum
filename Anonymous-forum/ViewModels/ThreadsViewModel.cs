@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System.ComponentModel.DataAnnotations;
 
 namespace Anonymous_forum.Models
 {
@@ -8,5 +9,7 @@ namespace Anonymous_forum.Models
         public string? ThreadText { get; set; }
         [Required(ErrorMessage = "You have to give the thread a title.")]
         public string? ThreadTitle { get; set; }
+        public int CategoryId { get; set; }
+        public List<SelectListItem>? Categories { get; set; }
     }
 }

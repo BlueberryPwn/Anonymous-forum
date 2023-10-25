@@ -1,0 +1,24 @@
+﻿@using Microsoft.EntityFrameworkCore;
+@model Anonymous_forum.Models.CommentsViewModel
+
+@{
+    ViewData["Title"] = "CreateComments";
+}
+
+<h2>Create New Comment</h2>
+
+@using (Html.BeginForm("CreateComments", "Threads", FormMethod.Post))
+{
+    <fieldset>
+        <div class="form-label">
+            @Html.LabelFor(model => model.CommentText)
+        </div>
+        <div class="form-field">
+            @Html.EditorFor(model => model.CommentText, new { @placeholder="Comment"})
+            @Html.ValidationMessageFor(model => model.CommentText, "")
+        </div>
+        <div>
+            <input type="submit" value="Create New Comment" />
+        </div>
+    </fieldset>
+}

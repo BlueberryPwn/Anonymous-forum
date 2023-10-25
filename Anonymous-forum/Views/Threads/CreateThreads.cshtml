@@ -1,0 +1,43 @@
+﻿@using Microsoft.EntityFrameworkCore;
+@model Anonymous_forum.Models.ThreadsViewModel
+
+@{
+    ViewData["Title"] = "CreateThreads";
+}
+
+<h2>Create New Thread</h2>
+
+@using (Html.BeginForm("CreateThreads", "Threads", FormMethod.Post))
+{
+    <fieldset>
+        <div class="form-label">
+            @Html.LabelFor(model => model.ThreadTitle)
+        </div>
+        <div class="form-field">
+            @Html.TextBoxFor(model => model.ThreadTitle, new { @placeholder="Title"})
+            @Html.ValidationMessageFor(model => model.ThreadTitle, "")
+        </div>
+        <div class="form-label">
+            @Html.LabelFor(model => model.ThreadText)
+        </div>
+        <div class="form-field">
+            @Html.TextBoxFor(model => model.ThreadText, new { @placeholder="Text"})
+            @Html.ValidationMessageFor(model => model.ThreadText, "")
+        </div>
+        <div class="form-label">
+            @Html.LabelFor(model => model.Categories)
+        </div>
+        <div class="form-field">
+            @Html.DropDownListFor(model => model.CategoryId, new SelectList(Model.Categories))
+        </div>
+        <div>
+            <input type="submit" value="Create New Thread" />
+        </div>
+    </fieldset>
+}
+
+@section scripts{
+    <script>
+
+    </script>
+}
