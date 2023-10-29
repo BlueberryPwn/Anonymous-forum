@@ -1,5 +1,6 @@
 ﻿using Anonymous_forum.Data;
 using Anonymous_forum.Models;
+using Anonymous_forum.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Threading;
@@ -18,37 +19,34 @@ namespace Anonymous_forum.Controllers
         public IActionResult Index(int id)
         {
             var result = _dbContext.Threads.Where(x => x.CategoryId == id).ToList();
+            var viewModel = new DisplayCategoryThreadsViewModel { CategoryId = id, ThreadsList = result };
 
-            return View(result);
+            return View(viewModel);
         }
 
         [HttpGet]
-        public IActionResult CreateThread()
+        public IActionResult CreateThread(int categoryId)
         {
-            var result = new ThreadViewModel
-            {
-                Categories = _dbContext.Categories
-                .Select(c => new SelectListItem()
-                {
-                    Value = c.CategoryId.ToString()
-                })
-                .ToList()
-            };
-            return View(result);
+            var viewModel = new CreateThreadViewModel { CategoryId = categoryId };
+            return View(viewModel);
         }
 
         [HttpPost]
-        public IActionResult CreateThread(Threads threads)
+        public IActionResult PostThread(int categoryId, string threadText, string threadTitle)
         {
-            if (!ModelState.IsValid)
+            if (!string.IsNullOrEmpty(threadTitle) && !string.IsNullOrEmpty(threadText))
             {
-                return View(threads);
+                var thread = new Threads
+                {
+                    CategoryId = categoryId,
+                    ThreadText = threadText,
+                    ThreadTitle = threadTitle
+                };
+                _dbContext.Threads.Add(thread);
+                _dbContext.SaveChanges();
             }
 
-            _dbContext.Threads.Add(threads);
-            _dbContext.SaveChanges();
-
-            return Redirect("/");
+            return Redirect($"~/Thread/Index/{categoryId}");
         }
 
         [HttpGet]

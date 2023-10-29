@@ -1,4 +1,6 @@
-﻿@model IEnumerable<Anonymous_forum.Models.Threads>
+﻿@using Anonymous_forum.ViewModels;
+
+@model DisplayCategoryThreadsViewModel;
 
 @{
     ViewData["Title"] = "Index";
@@ -7,12 +9,15 @@
 <h1>Threads</h1>
 
 <p>
-    @Html.ActionLink("Create a new thread", "CreateThread")
+    @Html.ActionLink("Create a new thread", "CreateThread", new { categoryId = Model.CategoryId })
 </p>
 
-<table class="table">
-    @foreach (var thread in Model)
-    {
-        Html.RenderPartial("_Card", thread);
-    }
-</table>
+@if (Model.ThreadsList != null)
+{
+    <table class="table">
+        @foreach (var thread in Model.ThreadsList)
+        {
+            Html.RenderPartial("_Card", thread);
+        }
+    </table>
+}

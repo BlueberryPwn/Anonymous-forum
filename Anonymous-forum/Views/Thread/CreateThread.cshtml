@@ -1,16 +1,20 @@
-﻿@using Microsoft.EntityFrameworkCore;
-@model Anonymous_forum.Models.ThreadViewModel
+﻿@using Anonymous_forum.ViewModels;
+@using Microsoft.EntityFrameworkCore;
+
+@model CreateThreadViewModel;
 
 @{
     ViewData["Title"] = "CreateThread";
 }
 
 <h2>Create New Thread</h2>
-<p>@Html.ActionLink("Go back", "Index")</p>
+<a href="/Thread/Index/@Model.CategoryId">Go back</a>
+<hr/>
 
-@using (Html.BeginForm("CreateThread", "Thread", FormMethod.Post))
+@using (Html.BeginForm("PostThread", "Thread", FormMethod.Post))
 {
     <fieldset>
+        <input type="hidden" value="@Model.CategoryId" name="categoryId" />
         <div class="form-label">
             @Html.LabelFor(model => model.ThreadTitle)
         </div>
@@ -25,12 +29,7 @@
             @Html.TextBoxFor(model => model.ThreadText, new { @placeholder="Text"})
             @Html.ValidationMessageFor(model => model.ThreadText, "")
         </div>
-        <div class="form-label">
-            @Html.LabelFor(model => model.Categories)
-        </div>
-        <div class="form-field">
-            @Html.DropDownListFor(model => model.CategoryId, new SelectList(Model.Categories))
-        </div>
+        <hr/>
         <div>
             <input type="submit" value="Create New Thread" />
         </div>

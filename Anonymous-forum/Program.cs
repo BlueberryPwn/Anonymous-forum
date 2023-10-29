@@ -1,8 +1,5 @@
-﻿using Anonymous_forum.Models;
+﻿using Anonymous_forum.Data;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using Anonymous_forum.Data;
-using System.Security.Policy;
 
 namespace Anonymous_forum
 {
@@ -48,6 +45,14 @@ namespace Anonymous_forum
                 endpoints.MapControllerRoute(
                     name: "thread",
                     pattern: "{controller=Thread}/{action=Thread}/{id}");
+
+                endpoints.MapControllerRoute(
+                    name: "createThread",
+                    pattern: "{controller=Thread}/{action=CreateThread}/{categoryId}");
+
+                endpoints.MapControllerRoute(
+                    name: "postThread",
+                    pattern: "{controller=Thread}/{action=PostThread}/{categoryId}");
             });
 
             app.Run();
