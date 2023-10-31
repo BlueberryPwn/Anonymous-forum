@@ -1,23 +1,23 @@
-﻿@model IEnumerable<Anonymous_forum.Models.ThreadViewModel>
+﻿@using Anonymous_forum.ViewModels;
+
+@model ThreadViewModel;
 
 @{
     ViewData["Title"] = "Thread";
 }
 
-<h1>@Html.DisplayNameFor(model => model.ThreadTitle)</h1>
-<p>@Html.DisplayNameFor(model => model.ThreadText)</p>
+<h1>Thread</h1>
 
 <p>
-    @Html.ActionLink("Add a comment", "CreateComment")
+    @Html.ActionLink("Create a comment", "CreateComment", new { threadId = Model.ThreadId })
 </p>
 
-<table class="table">
-    @foreach (var comment in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelThread => comment.CommentText)
-            </td>
-        </tr>
-    }
-</table>
+@if (Model.Comments != null)
+{
+    <table class="table">
+        @foreach (var comment in Model.Comments)
+        {
+            Html.RenderPartial("_Comments", comment);
+        }
+    </table>
+}

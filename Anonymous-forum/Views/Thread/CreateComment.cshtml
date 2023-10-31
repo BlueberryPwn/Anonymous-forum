@@ -1,22 +1,28 @@
-﻿@using Microsoft.EntityFrameworkCore;
-@model Anonymous_forum.Models.ThreadViewModel
+﻿@using Anonymous_forum.ViewModels;
+@using Microsoft.EntityFrameworkCore;
+
+@model CreateCommentViewModel;
 
 @{
     ViewData["Title"] = "CreateComment";
 }
 
 <h2>Create New Comment</h2>
+<a href="/Thread/Thread/@Model.ThreadId">Go back</a>
+<hr/>
 
-@using (Html.BeginForm("CreateComment", "Thread", FormMethod.Post))
+@using (Html.BeginForm("PostComment", "Thread", FormMethod.Post))
 {
     <fieldset>
+        <input type="hidden" value="@Model.ThreadId" name="threadId" />
         <div class="form-label">
             @Html.LabelFor(model => model.CommentText)
         </div>
         <div class="form-field">
-            @Html.EditorFor(model => model.CommentText, new { @placeholder="Comment"})
+            @Html.TextBoxFor(model => model.CommentText, new { @placeholder="Comment"})
             @Html.ValidationMessageFor(model => model.CommentText, "")
         </div>
+        <hr/>
         <div>
             <input type="submit" value="Create New Comment" />
         </div>

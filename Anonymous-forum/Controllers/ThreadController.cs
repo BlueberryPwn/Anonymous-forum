@@ -2,8 +2,6 @@
 using Anonymous_forum.Models;
 using Anonymous_forum.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using System.Threading;
 
 namespace Anonymous_forum.Controllers
 {
@@ -34,7 +32,7 @@ namespace Anonymous_forum.Controllers
         [HttpPost]
         public IActionResult PostThread(int categoryId, string threadText, string threadTitle)
         {
-            if (!string.IsNullOrEmpty(threadTitle) && !string.IsNullOrEmpty(threadText))
+            if (!string.IsNullOrEmpty(threadText) && !string.IsNullOrEmpty(threadTitle))
             {
                 var thread = new Threads
                 {
@@ -53,22 +51,33 @@ namespace Anonymous_forum.Controllers
         public IActionResult Thread(int id)
         {
             var result = _dbContext.Comments.Where(x => x.ThreadId == id).ToList();
+            var viewModel = new ThreadViewModel { ThreadId = id, Comments = result };
 
-            return View(result);
+            return View(viewModel);
+        }
+
+        [HttpGet]
+        public IActionResult CreateComment(int threadId)
+        {
+            var viewModel = new CreateCommentViewModel { ThreadId = threadId };
+            return View(viewModel);
         }
 
         [HttpPost]
-        public IActionResult CreateComment(Comments comments)
+        public IActionResult PostComment(int threadId, string commentText)
         {
-            if (!ModelState.IsValid)
+            if (!string.IsNullOrEmpty(commentText))
             {
-                return View(comments);
+                var comment = new Comments
+                {
+                    ThreadId = threadId,
+                    CommentText = commentText
+                };
+                _dbContext.Comments.Add(comment);
+                _dbContext.SaveChanges();
             }
 
-            _dbContext.Comments.Add(comments);
-            _dbContext.SaveChanges();
-
-            return Redirect("/");
+            return Redirect($"~/Thread/Thread/{threadId}");
         }
     }
 }

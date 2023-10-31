@@ -53,6 +53,14 @@ namespace Anonymous_forum
                 endpoints.MapControllerRoute(
                     name: "postThread",
                     pattern: "{controller=Thread}/{action=PostThread}/{categoryId}");
+
+                endpoints.MapControllerRoute(
+                    name: "createComment",
+                    pattern: "{controller=Thread}/{action=CreateComment}/{threadId}");
+
+                endpoints.MapControllerRoute(
+                    name: "postThread",
+                    pattern: "{controller=Thread}/{action=PostComment}/{threadId}");
             });
 
             app.Run();
