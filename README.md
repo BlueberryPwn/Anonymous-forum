@@ -1,1 +1,2 @@
 # Anonymous-forum
+This is a C# project based on the MVC design pattern. Users may in this forum visit different categories, create threads as well as visit them. Users can also post comments inside a thread.
