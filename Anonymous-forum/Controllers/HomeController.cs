@@ -1,8 +1,8 @@
-﻿using Anonymous_forum.Models;
+﻿using AnonymousForum.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace Anonymous_forum.Controllers
+namespace AnonymousForum.Controllers
 {
     public class HomeController : Controller
     {

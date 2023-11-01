@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace Anonymous_forum.Migrations
+namespace AnonymousForum.Migrations
 {
     /// <inheritdoc />
     public partial class InitialMigration : Migration

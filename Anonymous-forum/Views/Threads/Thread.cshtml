@@ -1,4 +1,4 @@
-﻿@using Anonymous_forum.ViewModels;
+﻿@using AnonymousForum.ViewModels;
 
 @model ThreadViewModel;
 
@@ -6,7 +6,11 @@
     ViewData["Title"] = "Thread";
 }
 
-<h1>Thread</h1>
+<a href="/Threads/Index/@Model.CategoryId">Go back</a>
+<h1>@Html.DisplayFor(x => x.ThreadTitle)</h1>
+<p>@Html.DisplayFor(x => x.ThreadText)</p>
+<hr/>
+<h4>Comments</h4>
 
 <p>
     @Html.ActionLink("Create a comment", "CreateComment", new { threadId = Model.ThreadId })

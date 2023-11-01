@@ -1,4 +1,4 @@
-﻿@using Anonymous_forum.ViewModels;
+﻿@using AnonymousForum.ViewModels;
 @using Microsoft.EntityFrameworkCore;
 
 @model CreateThreadViewModel;
@@ -7,23 +7,23 @@
     ViewData["Title"] = "CreateThread";
 }
 
-<h2>Create New Thread</h2>
-<a href="/Thread/Index/@Model.CategoryId">Go back</a>
+<h1>Create New Thread</h1>
+<a href="/Threads/Index/@Model.CategoryId">Go back</a>
 <hr/>
 
-@using (Html.BeginForm("PostThread", "Thread", FormMethod.Post))
+@using (Html.BeginForm("PostThread", "Threads", FormMethod.Post))
 {
     <fieldset>
         <input type="hidden" value="@Model.CategoryId" name="categoryId" />
         <div class="form-label">
-            @Html.LabelFor(model => model.ThreadTitle)
+            Please enter your title
         </div>
         <div class="form-field">
             @Html.TextBoxFor(model => model.ThreadTitle, new { @placeholder="Title"})
             @Html.ValidationMessageFor(model => model.ThreadTitle, "")
         </div>
         <div class="form-label">
-            @Html.LabelFor(model => model.ThreadText)
+            Please type your text
         </div>
         <div class="form-field">
             @Html.TextBoxFor(model => model.ThreadText, new { @placeholder="Text"})

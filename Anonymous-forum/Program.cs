@@ -1,7 +1,7 @@
-﻿using Anonymous_forum.Data;
+﻿using AnonymousForum.Data;
 using Microsoft.EntityFrameworkCore;
 
-namespace Anonymous_forum
+namespace AnonymousForum
 {
     public class Program
     {
@@ -40,27 +40,27 @@ namespace Anonymous_forum
 
                 endpoints.MapControllerRoute(
                     name: "threads",
-                    pattern: "{controller=Thread}/{action=Index}/{id}");
+                    pattern: "{controller=Threads}/{action=Index}/{id}");
 
                 endpoints.MapControllerRoute(
                     name: "thread",
-                    pattern: "{controller=Thread}/{action=Thread}/{id}");
+                    pattern: "{controller=Threads}/{action=Thread}/{id}");
 
                 endpoints.MapControllerRoute(
                     name: "createThread",
-                    pattern: "{controller=Thread}/{action=CreateThread}/{categoryId}");
+                    pattern: "{controller=Threads}/{action=CreateThread}/{categoryId}");
 
                 endpoints.MapControllerRoute(
                     name: "postThread",
-                    pattern: "{controller=Thread}/{action=PostThread}/{categoryId}");
+                    pattern: "{controller=Threads}/{action=PostThread}/{categoryId}");
 
                 endpoints.MapControllerRoute(
                     name: "createComment",
-                    pattern: "{controller=Thread}/{action=CreateComment}/{threadId}");
+                    pattern: "{controller=Threads}/{action=CreateComment}/{threadId}");
 
                 endpoints.MapControllerRoute(
                     name: "postThread",
-                    pattern: "{controller=Thread}/{action=PostComment}/{threadId}");
+                    pattern: "{controller=Threads}/{action=PostComment}/{threadId}");
             });
 
             app.Run();

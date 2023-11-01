@@ -1,14 +1,14 @@
-﻿using Anonymous_forum.Data;
-using Anonymous_forum.Models;
-using Anonymous_forum.ViewModels;
+﻿using AnonymousForum.Data;
+using AnonymousForum.Models;
+using AnonymousForum.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Anonymous_forum.Controllers
+namespace AnonymousForum.Controllers
 {
-    public class ThreadController : Controller
+    public class ThreadsController : Controller
     {
         private readonly ForumContext _dbContext;
-        public ThreadController(ForumContext dbContext)
+        public ThreadsController(ForumContext dbContext)
         {
             _dbContext = dbContext;
         }
@@ -44,14 +44,22 @@ namespace Anonymous_forum.Controllers
                 _dbContext.SaveChanges();
             }
 
-            return Redirect($"~/Thread/Index/{categoryId}");
+            return Redirect($"~/Threads/Index/{categoryId}");
         }
 
         [HttpGet]
         public IActionResult Thread(int id)
         {
-            var result = _dbContext.Comments.Where(x => x.ThreadId == id).ToList();
-            var viewModel = new ThreadViewModel { ThreadId = id, Comments = result };
+            var comments = _dbContext.Comments.Where(x => x.ThreadId == id).ToList();
+            var thread = _dbContext.Threads.Where(x =>x.ThreadId == id).FirstOrDefault();
+            var viewModel = new ThreadViewModel 
+            {
+                ThreadId = id,
+                CategoryId = thread?.CategoryId ?? 0,
+                Comments = comments,
+                ThreadTitle = thread?.ThreadTitle,
+                ThreadText = thread?.ThreadText
+            };
 
             return View(viewModel);
         }
@@ -77,7 +85,7 @@ namespace Anonymous_forum.Controllers
                 _dbContext.SaveChanges();
             }
 
-            return Redirect($"~/Thread/Thread/{threadId}");
+            return Redirect($"~/Threads/Thread/{threadId}");
         }
     }
 }

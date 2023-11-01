@@ -1,6 +1,6 @@
-﻿using Anonymous_forum.Models;
+﻿using AnonymousForum.Models;
 
-namespace Anonymous_forum.ViewModels
+namespace AnonymousForum.ViewModels
 {
     public class DisplayCategoryThreadsViewModel
     {

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using Anonymous_forum.Models;
+using AnonymousForum.Models;
 
-namespace Anonymous_forum.Data
+namespace AnonymousForum.Data
 {
     public class ForumContext : DbContext
     {

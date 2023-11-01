@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations;
 
-namespace Anonymous_forum.Models
+namespace AnonymousForum.Models
 {
     public class ThreadViewModel
     {

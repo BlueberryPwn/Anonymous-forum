@@ -1,7 +1,7 @@
-﻿using Anonymous_forum.Models;
+﻿using AnonymousForum.Models;
 using System.ComponentModel.DataAnnotations;
 
-namespace Anonymous_forum.ViewModels
+namespace AnonymousForum.ViewModels
 {
     public class CreateThreadViewModel
     {
