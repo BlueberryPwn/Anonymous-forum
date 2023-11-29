@@ -9,10 +9,9 @@ namespace AnonymousForum
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            // Add services to the container.
             builder.Services.AddDbContext<ForumContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("ForumContext")));
-
-            // Add services to the container.
             builder.Services.AddControllersWithViews();
 
             var app = builder.Build();
